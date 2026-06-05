@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALL Blogs</title>
+    <title>記事詳細</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    
     <header>
         <div class="hamburger" id="hamburger">
             <span></span>
@@ -24,20 +23,13 @@
     </nav>
 </header>
 
-<main>
-    <br>
-    <div th:if="${blogList != null}">
-        <ul class="blog-container">
-            <li th:each="blog : ${blogList}" style="list-style: none;">
-                <a th:href="@{/blogs/{id}(id=${blog.id})}" 
-                       th:text="${blog.title}">
-                       タイトル
-                    </a>
-            </li>
-        </ul>
-    </div>
-</main>
-
-<script th:src="@{/js/script.js}"></script>
+    <main style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
+        <h2 th:text="${blog.title}" style="border-bottom: 2px solid #333; padding-bottom: 10px;">タイトル</h2>
+        
+        <div th:text="${blog.content}" style="line-height: 1.8; margin-top: 20px; white-space: pre-wrap;">
+            内容がここに表示されます
+        </div>
+    </main>
+    <script th:src="@{/js/script.js}"></script>
 </body>
 </html>
